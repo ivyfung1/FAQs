@@ -50,6 +50,7 @@ These FAQs (Frequent Asked Questions) are compiled from Telegram chatgroup NEM::
 **A:** If you are running your own local NIS (NEM Infrastructure Server) node, you can generate new account using the endpoint: http://localhost:7890/account/generate. Else you may use the NEM SDK (example for Testnet):
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 `var nem = require('nem-sdk').default;`
 `var rBytes = nem.crypto.nacl.randomBytes(32);`
 `var privateKey = nem.utils.convert.ua2hex(rBytes);`
@@ -57,12 +58,17 @@ These FAQs (Frequent Asked Questions) are compiled from Telegram chatgroup NEM::
 `var publicKey = keyPair.publicKey.toString();`
 `var address = nem.model.address.toAddress(publicKey, -104);`
 =======
+=======
+>>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
 `var nem = require('nem-sdk').default;  
 var rBytes = nem.crypto.nacl.randomBytes(32);  
 var privateKey = nem.utils.convert.ua2hex(rBytes);  
 var keyPair = nem.crypto.keyPair.create(privateKey);  
 var publicKey = keyPair.publicKey.toString();  
 var address = nem.model.address.toAddress(publicKey, -104);`
+<<<<<<< HEAD
+>>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
+=======
 >>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
 
 ## Timestamp
@@ -85,12 +91,15 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 **Q:** What are the steps for an exchange to determine if the user is depositing XEM or other mosaic?  
 **A:** Here are simple step for an exchange to consider:
 <<<<<<< HEAD
+<<<<<<< HEAD
 `1. Check if the deposit transaction is a multisig transaction.`  
 `2. If it is, extract the inner trasaction.`    
 `3. Within the transaction (if is not a multisig transaction) or inner transaction, check if there is a "mosaic" array or if the "mosaic" array is empty.`    
 `4. If there isn't a "mosaic" array or if the "mosaic" array is emp ty, the deposit is XEM and the "amount" field equals to the amount of XEM deposited in term of micro-XEM (6 divisibles).`   
 `5. Else, the "amount" equals to a multiplier for the mosaic "quantity".`
 =======
+=======
+>>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
 
 ` 1. Check if the deposit transaction is a multisig transaction.
 2. If it is, extract the inner trasaction.
@@ -122,6 +131,9 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 ## SSL_PROTOCOL_ERROR/ https
 =======
 ## SSL_PROTOCOL_ERROR
+<<<<<<< HEAD
+>>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
+=======
 >>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
 **Q:** Transactions I made on localhost worked well. However, I hit  https://23.228.67.85:7890/transaction/announce `ERR_SSL_PROTOCOL_ERROR` when it is hosted online.  
 **A:** Majority of the nodes listen on http ports while you are calling with https. However, you can have SSL in your site and call http nodes in backend. Only a handful NEM nodes listen to https. It’s usually on 7891 instead of 7890.
@@ -146,7 +158,11 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 **A:** There could be only 0.001 XEM in your testnet address. When you get the account balance from an endpoint, it always show in microbalances. As XEM has divisibility of 6, 1000 microXEM means 0.001 XEM. Same goes to mosaic. It will always show in micro-mosaic (depends on its divisibility).
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ##N NEM Wallet
+=======
+## NEM Wallet
+>>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
 =======
 ## NEM Wallet
 >>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
