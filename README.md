@@ -11,16 +11,19 @@ These FAQs (Frequent Asked Questions) are compiled from Telegram chatgroup NEM::
 
 ## Non-fungible token
 **Q:** Is there a standard procedure to develop collectibel tokens/mosaics (non-fungible)?  
+**A:** There is no project in NEM1 for this, but there is a first draft (with a few issues) for NEM2: https://github.com/aleixmorgadas/nem2-nonfungible-asset. For NEM1,mosaic is fungile. Non-fungible asset can be created using `account`.
 
 # NEM2
 
 ## API
 **Q:** Does Catapult has API Key feature to secure REST API?  
+**A:** No, it works the same as NIS1 in which you just call the endpoints. No API Key needed.
 
 **Q:** How to manage Access Control List (ACL) offchain?  
 **A:** Currently there is no mechanism for this. Generally, frontend interacts with the SDK, SDK interacts with Catapult. Getting information does not require any permission or special parameters.
 
 ## Voting System
+**Q:** I am using AggreateTransaction function for my voting system so that the transactions of votes to the candidates and the registration of the user's identifier are annouced at the same time. In tnis case, the identifiers and the votes to the candidate can be seen. How to separate these information?  
 **A:** You may have a transaction to confirm the registration of the user first with the UI making the user wait for the confirmation of the registration. Create mosaic to be distributed to registered user/voter to only vote once by sending the mosaic to address of the candidate the user/voter wishes to vote for. 
 
 **Q:** Does the user/voter has to use a wallet to vote?  
@@ -46,12 +49,21 @@ These FAQs (Frequent Asked Questions) are compiled from Telegram chatgroup NEM::
 **Q:** How to generate a new account other than generating through a NEM Wallet?  
 **A:** If you are running your own local NIS (NEM Infrastructure Server) node, you can generate new account using the endpoint: http://localhost:7890/account/generate. Else you may use the NEM SDK (example for Testnet):
 
+<<<<<<< HEAD
 `var nem = require('nem-sdk').default;`
 `var rBytes = nem.crypto.nacl.randomBytes(32);`
 `var privateKey = nem.utils.convert.ua2hex(rBytes);`
 `var keyPair = nem.crypto.keyPair.create(privateKey);`
 `var publicKey = keyPair.publicKey.toString();`
 `var address = nem.model.address.toAddress(publicKey, -104);`
+=======
+`var nem = require('nem-sdk').default;  
+var rBytes = nem.crypto.nacl.randomBytes(32);  
+var privateKey = nem.utils.convert.ua2hex(rBytes);  
+var keyPair = nem.crypto.keyPair.create(privateKey);  
+var publicKey = keyPair.publicKey.toString();  
+var address = nem.model.address.toAddress(publicKey, -104);`
+>>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
 
 ## Timestamp
 **Q:** I got an error saying the timestamp is too far in the future. How to fix it?  
@@ -72,11 +84,20 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 
 **Q:** What are the steps for an exchange to determine if the user is depositing XEM or other mosaic?  
 **A:** Here are simple step for an exchange to consider:
+<<<<<<< HEAD
 `1. Check if the deposit transaction is a multisig transaction.`  
 `2. If it is, extract the inner trasaction.`    
 `3. Within the transaction (if is not a multisig transaction) or inner transaction, check if there is a "mosaic" array or if the "mosaic" array is empty.`    
 `4. If there isn't a "mosaic" array or if the "mosaic" array is emp ty, the deposit is XEM and the "amount" field equals to the amount of XEM deposited in term of micro-XEM (6 divisibles).`   
 `5. Else, the "amount" equals to a multiplier for the mosaic "quantity".`
+=======
+
+` 1. Check if the deposit transaction is a multisig transaction.
+2. If it is, extract the inner trasaction.
+3. Within the transaction (if is not a multisig transaction) or inner transaction, check if there is a "mosaic" array or if the "mosaic" array is empty.  
+4. If there isn't a "mosaic" array or if the "mosaic" array is empty, the deposit is XEM and the "amount" field equals to the amount of XEM deposited in term of micro-XEM (6 divisibles).  
+5. Else, the "amount" equals to a multiplier for the mosaic "quantity".`
+>>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
 
 ## Multisignature Transactions
 **Q:** For multisig transaction, which hash should I use to retrieve information from NEM explorer?    
@@ -97,7 +118,11 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 **Q:** Does the node synchronise from 0 every time it restarts?  
 **A:** The node load from your hard drive when it restarts. Synchronization with the network is done only once. It might take hours for the first time it syncs with the network. You may download database dump `nis5_mainnet.h2-2015k.db.zip` from http://bob.nem.ninja/. After that, the next time you restart the node, the synchronization will be relatively faster as it will "loadBlock" into the memory.
 
+<<<<<<< HEAD
 ## SSL_PROTOCOL_ERROR/ https
+=======
+## SSL_PROTOCOL_ERROR
+>>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
 **Q:** Transactions I made on localhost worked well. However, I hit  https://23.228.67.85:7890/transaction/announce `ERR_SSL_PROTOCOL_ERROR` when it is hosted online.  
 **A:** Majority of the nodes listen on http ports while you are calling with https. However, you can have SSL in your site and call http nodes in backend. Only a handful NEM nodes listen to https. It’s usually on 7891 instead of 7890.
 
@@ -120,7 +145,11 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 **Q:** I have a testnet address with verified balance of 1000 XEM. My Mosaic levy is absolute of 5 XEM. I tried to send 1 mosaic to another address but got this error: FAILURE_INSUFFICIENT_BALANCE. What could have happened?   
 **A:** There could be only 0.001 XEM in your testnet address. When you get the account balance from an endpoint, it always show in microbalances. As XEM has divisibility of 6, 1000 microXEM means 0.001 XEM. Same goes to mosaic. It will always show in micro-mosaic (depends on its divisibility).
 
+<<<<<<< HEAD
 ##N NEM Wallet
+=======
+## NEM Wallet
+>>>>>>> 560e7e5cab4233f4b9eb7dfcbaf65bdef1f7d378
 **Q:** I still could not connect to a node even if I have switched to another node, multiple times. What could be the reason?  
 **A:** You could be in an office building or a university campus where the internet provider has blocked the port (7890) NEM is using. Check your firewall settings or use a VPN which will allow you to use the NEM Wallet.
 
