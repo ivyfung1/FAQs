@@ -5,13 +5,26 @@ These FAQs (Frequent Asked Questions) are compiled from Telegram chatgroup NEM::
 **Q:** Is it possible to create smart contract rules on-chain in NEM Blockchain?  
 **A:** NEM uses Smart Assets approach. All business logics are to be done at the application leyer. Smart Assets approach is more secure, in the sense that its bulletproof against onchain bugs caused by bad smart contracts developers. 
 
-## Permission
+## Private chain
 **Q:** How can I set the user privilege as to who can read and write to the blockchain?  
 **A:** A private chain could be your solution for this.
+
+**Q:** Can we create our own blockchain? Or can we fork NEM and modify certain configurations for us to create our own NEM? And still integrated with NEM?
+**A:** Yes. NEM2 Catapult is open source. You can deploy your own private chain and still integrated with other chains. Go to https://github.com/nemtech for more information. 
 
 ## Non-fungible token
 **Q:** Is there a standard procedure to develop collectibel tokens/mosaics (non-fungible)?  
 **A:** There is no project in NEM1 for this, but there is a first draft (with a few issues) for NEM2: https://github.com/aleixmorgadas/nem2-nonfungible-asset. For NEM1,mosaic is fungile. Non-fungible asset can be created using `account`.
+
+## Offline
+**Q:** Can an application interact with NEM Blockchain with or without internet ?  
+**A:** To unitilise the public NEM Blockchain, the applicaton has to be connected to the internet. If the application is running on local network for a private blockchain, that works too.
+
+## Programming language
+**Q:** What Progamming language can be used to build application for NEM?
+**A:** NEM Blockchain is API-driven. You may use any langugage you wish and utilise the SDKs available or build your own SDKs.  
+`SDKs for NIS1 https://nem.io/developers/`  
+`SDKs for Catapult https://nemtech.github.io/sdk/languages.html`
 
 # NEM2
 
@@ -33,6 +46,10 @@ These FAQs (Frequent Asked Questions) are compiled from Telegram chatgroup NEM::
 **Q:** I have set up nodes from Catapult-service-bootstrap. It was running fine and how I could not send any transaction to the network via nem2-sdk or CLI. How to fix this?  
 **A:** If you had a running network and then it stopped working even if you restarted it repeatedly, this could mean the chain file store and MongoDB are out of sync due to dirty shut down. Perform `./clean-data` and `./clean-all` and start afresh. https://github.com/tech-bureau/catapult-service-bootstrap#known-issues. 
 
+## Cross-chain Swap
+**Q:** How many attempts can be made until the secret proofs and secret lock match?  
+**A:** You may attempt as many time as possible before the stipulated time is up. However, if you have the correct secret proof, they shall match at the first attempt.
+
 # NEM1
 
 ## Supernodes
@@ -47,14 +64,13 @@ These FAQs (Frequent Asked Questions) are compiled from Telegram chatgroup NEM::
 **A:** Not from NEM mobile wallet. You can do that from NEM desktop wallet. Download desktop NEM Wallet from nem.io/downloads, open the "start.html" files in the folder, select "SIGN UP" on the top right, choose "Private key wallet", follow instruction and input the private key from your mobile wallet. You should be able to see the mosaics available in your account and manage them from there.
 
 **Q:** How to generate a new account other than generating through a NEM Wallet?  
-**A:** If you are running your own local NIS (NEM Infrastructure Server) node, you can generate new account using the endpoint: http://localhost:7890/account/generate. Else you may use the NEM SDK (example for Testnet):
-
-`var nem = require('nem-sdk').default;`
-`var rBytes = nem.crypto.nacl.randomBytes(32);`
-`var privateKey = nem.utils.convert.ua2hex(rBytes);`
-`var keyPair = nem.crypto.keyPair.create(privateKey);`
-`var publicKey = keyPair.publicKey.toString();`
-`var address = nem.model.address.toAddress(publicKey, -104);`
+**A:** If you are running your own local NIS (NEM Infrastructure Server) node, you can generate new account using the endpoint: http://localhost:7890/account/generate. Else you may use the NEM SDK (example for Testnet):  
+`var nem = require('nem-sdk').default;`  
+`var rBytes = nem.crypto.nacl.randomBytes(32);`  
+`var privateKey = nem.utils.convert.ua2hex(rBytes);`  
+`var keyPair = nem.crypto.keyPair.create(privateKey);`  
+`var publicKey = keyPair.publicKey.toString();`  
+`var address = nem.model.address.toAddress(publicKey, -104);`  
 
 ## Timestamp
 **Q:** I got an error saying the timestamp is too far in the future. How to fix it?  
@@ -74,7 +90,7 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 **A:** A lot of exchanges do support multisig transactions, but not all. 
 
 **Q:** What are the steps for an exchange to determine if the user is depositing XEM or other mosaic?  
-**A:** Here are simple step for an exchange to consider:
+**A:** Here are simple step for an exchange to consider:  
 `1. Check if the deposit transaction is a multisig transaction.`  
 `2. If it is, extract the inner trasaction.`    
 `3. Within the transaction (if is not a multisig transaction) or inner transaction, check if there is a "mosaic" array or if the "mosaic" array is empty.`    
@@ -98,7 +114,7 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 
 ## Synchronising with Network
 **Q:** Does the node synchronise from 0 every time it restarts?  
-**A:** The node load from your hard drive when it restarts. Synchronization with the network is done only once. It might take hours for the first time it syncs with the network. You may download database dump `nis5_mainnet.h2-2015k.db.zip` from http://bob.nem.ninja/. After that, the next time you restart the node, the synchronization will be relatively faster as it will "loadBlock" into the memory.
+**A:** The node load from your hard drive when it restarts. Synchronization with the network is done only once. It might take hours for the first time it syncs with the network. You may download database dump `nis5_mainnet.h2-2015k.db.zip` from http://bob.nem.ninja/. After that the next time you restart the node, the synchronization will be relatively faster as it will "loadBlock" into the memory.
 
 ## SSL_PROTOCOL_ERROR/ https
 **Q:** Transactions I made on localhost worked well. However, I hit  https://23.228.67.85:7890/transaction/announce `ERR_SSL_PROTOCOL_ERROR` when it is hosted online.  
@@ -111,12 +127,12 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 **Q:** How to make sure 2 transactions that are broadcasted together are included in the block or if one transaction fails, the other would be dropped?  
 **A:** Announcing transaction doesn't guarantee it will be included in a block. Once annouced, it cannot be called back. Transaction will be either be included in a block or dropped. However, in NEM2, aggregate transacton will have all the transactions aggregated included in a block or dropped altogether. Simply add a handler for https, proxying to the said node. 
 
-**Q:** The following result was returned after a transaction was annouced. What does it mean?
-`{ `
-       `..."type": 1, `
-       `..."code": 0,` 
-       `..."message": "neutral" `
-``}`  
+**Q:** The following result was returned after a transaction was annouced. What does it mean?  
+`{ `  
+       `"type": 1, `  
+       `"code": 0,`   
+       `"message": "neutral" `  
+`}`    
 **A:** Referring to https://nemproject.github.io/#nemRequestResult 9.30, neutral result. A typical example would be that a node validates an incoming transaction and realizes that it already knows about the transaction. In this case it is neither a success (meaning the node has a new transaction) nor a failure (because the transaction itself is valid). However, this doesn't mean the transaction will definately be included in a block. 
 
 ## FAILUTRE_INSUFFICIENT-BALANCE
@@ -127,9 +143,17 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 **Q:** I still could not connect to a node even if I have switched to another node, multiple times. What could be the reason?  
 **A:** You could be in an office building or a university campus where the internet provider has blocked the port (7890) NEM is using. Check your firewall settings or use a VPN which will allow you to use the NEM Wallet.
 
+**Q:** What should I do if harvesting of my NEM Wallet becomes ``INACTIVE``?   
+**A:** After login to your NEM Wallet, selet `Service` --> Under "Delegated Harvesting", select `Manage delegated account` --> Select `Start/Stop delegated harvesting` --> Select a node with free slot --> type your password.
+
 ## Vested XEM
 **Q:** Can the vested XEM be transferred?  
 **A:** Everytime when XEM are being transferred, it will be a combination of vested and unvested XEM. However, it will be all unvested to the recipient. 
 
 **Q:** How long it takes for me to have 10k vested XEM, if I have 20k XEM in total?  
 **A:** You use this calculator https://nem-tools.com/#/harvesting/calculator.
+
+## Mosaic
+**Q:** What would happen to the Mosaics if the Namespace it ties to didn't get renewed?  
+**A:** After the Namespace on its 12th month of rental, the account owns the Namespace can renew it and continue with another year of rental, together with the Mosaics attached to it.   After the 12th month, the Namespace and Mosaics will not be shown, however, the creator of the Namespace can still rent back the Namespace, before the 13th month ends, together with the Mosaics attached to it. When the creator account rent back the Namespace, the Namespace and the Mosaics will be shown again. Only the creator of the Namespace can rent back that particuar Namespace during the 13th month.    
+After the 13th month, the Namespace will be available for any account to rent. The mosaics, however, will be gone forever. 
