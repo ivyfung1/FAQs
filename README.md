@@ -9,7 +9,7 @@ These FAQs (Frequent Asked Questions) are compiled from Telegram chatgroup NEM::
 **Q:** How can I set the user privilege as to who can read and write to the blockchain?  
 **A:** A private chain could be your solution for this.
 
-**Q:** Can we create our own blockchain? Or can we fork NEM and modify certain configurations for us to create our own NEM? And still integrated with NEM?
+**Q:** Can we create our own blockchain? Or can we fork NEM and modify certain configurations for us to create our own NEM? And still integrated with NEM?  
 **A:** Yes. NEM2 Catapult is open source. You can deploy your own private chain and still integrated with other chains. Go to https://github.com/nemtech for more information. 
 
 ## Non-fungible token
@@ -21,7 +21,7 @@ These FAQs (Frequent Asked Questions) are compiled from Telegram chatgroup NEM::
 **A:** To unitilise the public NEM Blockchain, the applicaton has to be connected to the internet. If the application is running on local network for a private blockchain, that works too.
 
 ## Programming language
-**Q:** What Progamming language can be used to build application for NEM?
+**Q:** What Progamming language can be used to build application for NEM?  
 **A:** NEM Blockchain is API-driven. You may use any langugage you wish and utilise the SDKs available or build your own SDKs.  
 `SDKs for NIS1 https://nem.io/developers/`  
 `SDKs for Catapult https://nemtech.github.io/sdk/languages.html`
