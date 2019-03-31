@@ -157,3 +157,7 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 **Q:** What would happen to the Mosaics if the Namespace it ties to didn't get renewed?  
 **A:** After the Namespace on its 12th month of rental, the account owns the Namespace can renew it and continue with another year of rental, together with the Mosaics attached to it.   After the 12th month, the Namespace and Mosaics will not be shown, however, the creator of the Namespace can still rent back the Namespace, before the 13th month ends, together with the Mosaics attached to it. When the creator account rent back the Namespace, the Namespace and the Mosaics will be shown again. Only the creator of the Namespace can rent back that particuar Namespace during the 13th month.    
 After the 13th month, the Namespace will be available for any account to rent. The mosaics, however, will be gone forever. 
+
+## API
+**Q:** How to query for transactions of an account for more than 25 transactions per page?
+**A:** E.g. http://18.224.152.252:7890/account/transfers/incoming?address=TAR4ZUESJDG2IWJUVVV3UUEECSB2CV5B6UIO3GEM&pageSize=1000
