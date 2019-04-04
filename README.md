@@ -4,6 +4,11 @@ Collaboration is welcomed.
 As the development progresses (especially for NEM2), answers may vary.  
 
 # General Questions
+
+## Mosaic
+**Q:** Does Mosaic only represent coin or tokens or cryptocurrency?  
+**A:** No. A mosaic can represent anything you set it to be. It can be representing units of cryptocurrency or any asset (Security token). 
+
 ## On-chain Smart Contract
 **Q:** Is it possible to create smart contract rules on-chain in NEM Blockchain?  
 **A:** NEM uses Smart Assets approach. All business logics are to be done at the application leyer. Smart Assets approach is more secure, in the sense that its bulletproof against onchain bugs caused by bad smart contracts developers. 
@@ -18,7 +23,7 @@ As the development progresses (especially for NEM2), answers may vary.
 **Q:** Can we create our own blockchain? Or can we fork NEM and modify certain configurations for us to create our own NEM? And still integrated with NEM?  
 **A:** Yes. NEM2 Catapult is open source. You can deploy your own private chain and still integrated with other chains. Go to https://github.com/nemtech for more information. 
 
-**Q:** Can anyone participate in the BLockchain?  
+**Q:** Can anyone participate in the Blockchain?  
 **A:** Yes, for public chain. For private or hybrid chain, you may need permission to participate. To participate, you will need an account. 
 
 ## Non-fungible token
@@ -26,7 +31,7 @@ As the development progresses (especially for NEM2), answers may vary.
 **A:** There is no project in NEM1 for this, but there is a first draft (with a few issues) for NEM2: https://github.com/aleixmorgadas/nem2-nonfungible-asset. For NEM1,mosaic is fungile. Non-fungible asset can be created using `account`.
 
 **Q:** What is fungibility?  
-**A:** [`In economics, fungibility is the property of a good or a commodity whose individual units are essentially interchangeable, and each of its parts is indistinguishable from another part.`](https://en.wikipedia.org/wiki/Fungibility) 
+**A:** [`In economics, fungibility is the property of a good or a commodity whose individual units are essentially interchangeable, and each of its parts is indistinguishable from another part.`](https://en.wikipedia.org/wiki/Fungibility) - Wikipedia. 
 
 ## Offline
 **Q:** Can an application interact with NEM Blockchain with or without internet ?  
@@ -44,7 +49,7 @@ As the development progresses (especially for NEM2), answers may vary.
 ## Multisignature Account
 **Q:** Is that possible to revert a multisignature account back to uni-sighnature account?  
 **A:** Yes, this must be initialized from the cosigner. First, login to cosigner, go to `Services -> Multisignature and Multi-User Accounts -> Edit an existing contract.`
-Check this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contracts-with-nanowallet/)
+Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contracts-with-nanowallet/)
 
 ## Sending transaction
 **Q:** Is it possible to send a payment request transaction to an address on the NEM Network or run a debit order against an account for a monthly services?   
@@ -66,9 +71,6 @@ Check this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contracts-
 **Q:** Are there fees for every transaction?  
 **A:** Yes. For the public chain, every transaction will have transaction fee to be paid in XEM. 
 
-## Mosaic
-**Q:** Does Mosaic only represent coin or tokens or cryptocurrency?  
-**A:** No. A mosaic can represent anything you set it to be. It can be representing units of cryptocurrency or any asset (Security token). 
 
 
 
@@ -128,7 +130,7 @@ const transfer = TransferTransaction.create(
 );
 ```
 
-# Mosaic
+## Mosaic
 **Q:** Is it possible that the duration of the mosaic is infinite?   
 **A:** Yes. `Eternal_Artifact_Duration (0 duration)` is default for mosaic and should not be specified  in the mosaic definition transaction.
 
@@ -177,11 +179,11 @@ const transfer = TransferTransaction.create(
 **A:** `Timestamp` is the number of seconds passed from the beginning of NEM epoch. `Deadline` is the time when transaction will be gone from unconfirmed, if it is not confirm. 
 
 ## Version
-**Q:** What are transaction type and version fields?
+**Q:** What are transaction type and version fields?  
 **A:** `Version` is just version of transaction structure. `Type` is the code which tells us how transaction fields should be interpreted: simple transfers, multi sig, importance transfer etc.
 
 ## Blocksize
-**Q:** What is NEM’s current blockchain size?
+**Q:** What is NEM’s current blockchain size?  
 **A:** As of 28 February 2019, it's 2.8GB.
 
 ## Exchanges
@@ -220,7 +222,7 @@ As XEM is also a mosaic, it can be transferred by using both versions.'
 **Q:** How to get all transactions in a block?  
 **A:** Refer to https://nemproject.github.io/#getting-part-of-a-chain 4.2.2, use the API path `/local/chain/blocks-after` to do that. This API will only works in localhost. 
 
-**Q:** Is there any testnet node where search by hash is working?
+**Q:** Is there any testnet node where search by hash is working?  
 **A:** Try 95.216.73.245. The full list is available [here.](http://bob.nem.ninja:8765/#/nodes/)
 
 ## SSL_PROTOCOL_ERROR/ https
@@ -243,7 +245,7 @@ You can use this https://nistest.opening-line.jp:7891
 `}`    
 **A:** Referring to https://nemproject.github.io/#nemRequestResult 9.30, neutral result. A typical example would be that a node validates an incoming transaction and realizes that it already knows about the transaction. In this case it is neither a success (meaning the node has a new transaction) nor a failure (because the transaction itself is valid). However, this doesn't mean the transaction will definately be included in a block. 
 
-**Q:** Are transaction hashes always in SHA3-256 and 64-characters?
+**Q:** Are transaction hashes always in SHA3-256 and 64-characters?  
 **A:** Yes.
 
 ## FAILUTRE_INSUFFICIENT-BALANCE
@@ -343,5 +345,5 @@ Here are the [license conditions](https://github.com/NemProject/NanoWallet/blob/
 **Q:** Do the main and sub wallet hold different private keys?  
 **A:** Yes. All have different private keys. Private key for subwallet is derived from primary account private key and password.
 
-**Q:** Is NCC still usable?
+**Q:** Is NCC still usable?  
 **A:** NCC is still working but it’s not maintained. For example, in NCC you will have hardcoded old fees structure. It is better to use [NEM Wallet.](https://nem.io/downloads/)
