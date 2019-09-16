@@ -104,6 +104,12 @@ If you’re using Windows 10 Home Edition, you can check out [this guide.](https
 **Q:** I've done `docker-compose up` & when I typed in the terminal `curl localhost:3000/block/1` it gives this error `curl: (7) Failed to connect to localhost port 3000: Connection refused`. How do I fix this error?  
 **A:** Connection refused usually means there is no server running. Try `netstat -an | grep -i`. You will get a list. Try `netstat -an`, if there is no row matching the number 3000 then you have to start the server using Docker Compose. Remove the `/data/mongo` lines in the `docker-compose.yml` file. There are two lines that have the `/data/mongo`. Delete both and run docker-compose up again. If the containers are not built properly, run docker-compose with the following flags `docker-compose up --force-recreate --build`.  
 
+**Q:** Error `does not match calculated receipts hash` appears when setting up Catapult-server. What could have caused this?
+**A:** This means your network settings vs settings used when running `nemgen` are different.
+
+**Q:** Does `clientPrivateKey` in catapult-rest `userconfig/rest.json` need to be an address with funds? 
+**A:** It does not need to be an address with fund. The address is used to uniquely identify a client with the api node.
+
 ## Cross-chain Swap
 **Q:** How many attempts can be made until the secret proofs and secret lock match?  
 **A:** You may attempt as many time as possible before the stipulated time is up. However, if you have the correct secret proof, they shall match at the first attempt.
