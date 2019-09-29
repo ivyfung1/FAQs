@@ -71,9 +71,6 @@ Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contra
 **Q:** Are there fees for every transaction?  
 **A:** Yes. For the public chain, every transaction will have transaction fee to be paid in XEM. 
 
-
-
-
 # NEM2
 
 ## NEM2-CLI
