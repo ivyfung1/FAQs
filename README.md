@@ -103,9 +103,9 @@ If you’re using Windows 10 Home Edition, you can check out [this guide.](https
 
 ## Formatting
 **Q** Why REST formatting some UInt64 as hex but others as string?
-**A** Identifiers do not have a meaning on their own when not encoded. For that reason, we can show them nicely in a shorter form (hex). Doing so, we achieve compatibility with the current endpoint parameters (e.g. /mosaic/<mosaicId (hexa)>).Other values such as supply are easier to read if not encoded (e.g. an amount, a duration). The rule right now is:
-```• quantitative: string
-• identifier: hex```
+**A** Identifiers do not have a meaning on their own when not encoded. For that reason, we can show them nicely in a shorter form (hex). Doing so, we achieve compatibility with the current endpoint parameters (e.g. /mosaic/<mosaicId (hexa)>).Other values such as supply are easier to read if not encoded (e.g. an amount, a duration). The rule right now is:  
+  • quantitative: string  
+  • identifier: hex  
 
 ## Mosaic
 **Q:** Is it possible that the duration of the mosaic is infinite?   
