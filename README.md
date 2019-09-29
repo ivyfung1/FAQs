@@ -9,6 +9,25 @@ As the development progresses (especially for NEM2), answers may vary.
 **Q:** Does Mosaic only represent coin or tokens or cryptocurrency?  
 **A:** No. A mosaic can represent anything you set it to be. It can be representing units of cryptocurrency or any asset (Security token). 
 
+## Multisignature Account
+**Q:** Is that possible to revert a multisignature account back to uni-sighnature account?  
+**A:** Yes, this must be initialized from the cosigner. First, login to cosigner, go to `Services -> Multisignature and Multi-User Accounts -> Edit an existing contract.`
+Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contracts-with-nanowallet/)
+
+## Non-fungible token
+**Q:** Is there a standard procedure to develop collectibel tokens/mosaics (non-fungible)?  
+**A:** There is no project in NEM1 for this, but there is a first draft (with a few issues) for NEM2: https://github.com/aleixmorgadas/nem2-nonfungible-asset. For NEM1,mosaic is fungile. Non-fungible asset can be created using `account`.
+
+**Q:** What is fungibility?  
+**A:** [`In economics, fungibility is the property of a good or a commodity whose individual units are essentially interchangeable, and each of its parts is indistinguishable from another part.`](https://en.wikipedia.org/wiki/Fungibility) - Wikipedia. 
+
+## Offline
+**Q:** Can an application interact with NEM Blockchain with or without internet ?  
+**A:** To unitilise the public NEM Blockchain, the applicaton has to be connected to the internet. If the application is running on local network for a private blockchain, that works too.
+
+**Q:** Can we run the application without internet?  
+**A:** You may run application without internet until the signing of the transaction. However, you will need internet or local network in order to interact with the Blockchain.  
+
 ## On-chain Smart Contract
 **Q:** Is it possible to create smart contract rules on-chain in NEM Blockchain?  
 **A:** NEM uses Smart Assets approach. All business logics are to be done at the application leyer. Smart Assets approach is more secure, in the sense that its bulletproof against onchain bugs caused by bad smart contracts developers. 
@@ -26,30 +45,11 @@ As the development progresses (especially for NEM2), answers may vary.
 **Q:** Can anyone participate in the Blockchain?  
 **A:** Yes, for public chain. For private or hybrid chain, you may need permission to participate. To participate, you will need an account. 
 
-## Non-fungible token
-**Q:** Is there a standard procedure to develop collectibel tokens/mosaics (non-fungible)?  
-**A:** There is no project in NEM1 for this, but there is a first draft (with a few issues) for NEM2: https://github.com/aleixmorgadas/nem2-nonfungible-asset. For NEM1,mosaic is fungile. Non-fungible asset can be created using `account`.
-
-**Q:** What is fungibility?  
-**A:** [`In economics, fungibility is the property of a good or a commodity whose individual units are essentially interchangeable, and each of its parts is indistinguishable from another part.`](https://en.wikipedia.org/wiki/Fungibility) - Wikipedia. 
-
-## Offline
-**Q:** Can an application interact with NEM Blockchain with or without internet ?  
-**A:** To unitilise the public NEM Blockchain, the applicaton has to be connected to the internet. If the application is running on local network for a private blockchain, that works too.
-
-**Q:** Can we run the application without internet?  
-**A:** You may run application without internet until the signing of the transaction. However, you will need internet or local network in order to interact with the Blockchain.  
-
 ## Programming language
 **Q:** What Progamming language can be used to build application for NEM?  
 **A:** NEM Blockchain is API-driven. You may use any langugage you wish and utilise the SDKs available or build your own SDKs.  
 `SDKs for NIS1 https://nem.io/developers/`  
 `SDKs for Catapult https://nemtech.github.io/sdk/languages.html`
-
-## Multisignature Account
-**Q:** Is that possible to revert a multisignature account back to uni-sighnature account?  
-**A:** Yes, this must be initialized from the cosigner. First, login to cosigner, go to `Services -> Multisignature and Multi-User Accounts -> Edit an existing contract.`
-Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contracts-with-nanowallet/)
 
 ## Sending transaction
 **Q:** Is it possible to send a payment request transaction to an address on the NEM Network or run a debit order against an account for a monthly services?   
@@ -73,24 +73,12 @@ Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contra
 
 # NEM2
 
-## NEM2-CLI
-**Q:** `Failed at the bufferutil@3.0.5 install script` This errors appeared when *npm install --global nem2-cli* was ran. What could be the cause?  
-**A:** Install Python version 2.7. Restart the PC to get the system paths updated. 
-Download link here: https://www.python.org/downloads/windows/
-
 ## API
 **Q:** Does Catapult has API Key feature to secure REST API?  
 **A:** No, it works the same as NIS1 in which you just call the endpoints. No API Key needed.
 
 **Q:** How to manage Access Control List (ACL) offchain?  
 **A:** Currently there is no mechanism for this. Generally, frontend interacts with the SDK, SDK interacts with Catapult. Getting information does not require any permission or special parameters.
-
-## Voting System
-**Q:** I am using AggreateTransaction function for my voting system so that the transactions of votes to the candidates and the registration of the user's identifier are annouced at the same time. In tnis case, the identifiers and the votes to the candidate can be seen. How to separate these information?  
-**A:** You may have a transaction to confirm the registration of the user first with the UI making the user wait for the confirmation of the registration. Create mosaic to be distributed to registered user/voter to only vote once by sending the mosaic to address of the candidate the user/voter wishes to vote for. 
-
-**Q:** Does the user/voter has to use a wallet to vote?  
-**A:** No, a wallet is not necessary.
 
 ## Catapult-service-bootstrap
 **Q:** I have set up nodes from Catapult-service-bootstrap. It was running fine and how I could not send any transaction to the network via nem2-sdk or CLI. How to fix this?  
@@ -113,25 +101,11 @@ If you’re using Windows 10 Home Edition, you can check out [this guide.](https
 **Q:** How many attempts can be made until the secret proofs and secret lock match?  
 **A:** You may attempt as many time as possible before the stipulated time is up. However, if you have the correct secret proof, they shall match at the first attempt.
 
-## Aggregate Tansactions
-**Q:** Why do I get the error `failure_lock_invalid_mosaic_id` when making a transaction with lock funds? I’m using `XEM.createRelative (10)` with the `NEM2 Typescript SDK`.  
-**A:** If you want to use *HashLock*, you first have to read the `cat.currency mosaic ID` like this:
-```Typescript
-const mosaicId = await namespaceHttp.getLinkedMosaicId(new NamespaceId(‘cat.currency’)).toPromise();
-const lockFunds = HashLockTransaction.create(…, …, [new Mosaic(mosaicId, UInt64.fromUint(absoluteAmount))], …);
-```  
-With Transfer, you can use the NamespaceID directly, instead of reading the mosaic id that is linked. (or instead of using Mosaic, use NetworkCurrencyMosaic directly).
-``` Typescript
-const recipient = Address… OR new NamespaceId(“evias”);
-const mosaics = [new Mosaic(new NamespaceId(‘cat.currency’), UInt64.fromUint(absoluteAmount))];
-const transfer = TransferTransaction.create(
-    Deadline.create(),
-    recipient,
-    mosaics,
-    EmptyMessage,
-    NetworkType.MIJIN_TEST
-);
-```
+## Formatting
+**Q** Why REST formatting some UInt64 as hex but others as string?
+**A** Identifiers do not have a meaning on their own when not encoded. For that reason, we can show them nicely in a shorter form (hex). Doing so, we achieve compatibility with the current endpoint parameters (e.g. /mosaic/<mosaicId (hexa)>).Other values such as supply are easier to read if not encoded (e.g. an amount, a duration). The rule right now is:
+```• quantitative: string
+• identifier: hex```
 
 ## Mosaic
 **Q:** Is it possible that the duration of the mosaic is infinite?   
@@ -141,7 +115,17 @@ const transfer = TransferTransaction.create(
 **Q:** In a Catapult private deployment, how can we set the Namespace renting price to zero?
 **A:** You can try changing the network specific configuration properties. It’s located in `config-network.properties` `rootNamespaceRentalFeePerBlock`, `childNamespaceRentalFee`, `mosaicRentalFee`. You will need to rebuild the server. 
 
+## NEM2-CLI
+**Q:** `Failed at the bufferutil@3.0.5 install script` This errors appeared when *npm install --global nem2-cli* was ran. What could be the cause?  
+**A:** Install Python version 2.7. Restart the PC to get the system paths updated. 
+Download link here: https://www.python.org/downloads/windows/
 
+## Voting System
+**Q:** I am using AggreateTransaction function for my voting system so that the transactions of votes to the candidates and the registration of the user's identifier are annouced at the same time. In tnis case, the identifiers and the votes to the candidate can be seen. How to separate these information?  
+**A:** You may have a transaction to confirm the registration of the user first with the UI making the user wait for the confirmation of the registration. Create mosaic to be distributed to registered user/voter to only vote once by sending the mosaic to address of the candidate the user/voter wishes to vote for. 
+
+**Q:** Does the user/voter has to use a wallet to vote?  
+**A:** No, a wallet is not necessary.
 
 # NEM1
 
