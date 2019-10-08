@@ -73,6 +73,9 @@ Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contra
 
 # NEM2
 
+**Q** How to get the raw public key string (64 characters) from a BIP0032 serialized (66 characters) representation of it?
+**A** Dropping the first 2 characters (first byte) will do. Please refer to https://github.com/nemfoundation/nem2-hd-wallets/blob/master/src/ExtendedKey.ts#L301
+
 ## API
 **Q:** Does Catapult has API Key feature to secure REST API?  
 **A:** No, it works the same as NIS1 in which you just call the endpoints. No API Key needed.
