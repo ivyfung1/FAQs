@@ -76,9 +76,6 @@ Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contra
 **Q** How to configure the websocket duration for node?
 **A** You may set `maxConnectionAge` at `config-node.properties`.
 
-**Q** How to get the raw public key string (64 characters) from a BIP0032 serialized (66 characters) representation of it?
-**A** Dropping the first 2 characters (first byte) will do. Please refer to https://github.com/nemfoundation/nem2-hd-wallets/blob/master/src/ExtendedKey.ts#L301
-
 ## API
 **Q:** Does Catapult has API Key feature to secure REST API?  
 **A:** No, it works the same as NIS1 in which you just call the endpoints. No API Key needed.
@@ -107,11 +104,22 @@ If you’re using Windows 10 Home Edition, you can check out [this guide.](https
 **Q:** How many attempts can be made until the secret proofs and secret lock match?  
 **A:** You may attempt as many time as possible before the stipulated time is up. However, if you have the correct secret proof, they shall match at the first attempt.
 
+## Fee
+**Q** How to calculate the Namespace rental fee?
+**A** The rental fee is calculated as followed:  
+`rootNamespaceRentalFeePerBlock` (1) *  median network multiplier over last `maxRollbackBlocks` (40).   
+In case there are zero multipliers, these are replaced by the `defaultDynamicFeeMultiplier` (10'000).
+As every node in your test network has `minFeeMultiplier` set to 0, the median becomes 10000 (extreme case). Hence, registering anything becomes expensive (1000 blocks * 10000 * 1 =  10000000).
+A potential solution is to change the `defaultDynamicFeeMultiplier` to a lower value (e.g. 1).
+
 ## Formatting
 **Q** Why REST formatting some UInt64 as hex but others as string?
 **A** Identifiers do not have a meaning on their own when not encoded. For that reason, we can show them nicely in a shorter form (hex). Doing so, we achieve compatibility with the current endpoint parameters (e.g. /mosaic/<mosaicId (hexa)>).Other values such as supply are easier to read if not encoded (e.g. an amount, a duration). The rule right now is:  
   • quantitative: string  
   • identifier: hex  
+  
+**Q** How to get the raw public key string (64 characters) from a BIP0032 serialized (66 characters) representation of it?
+**A** Dropping the first 2 characters (first byte) will do. Please refer to https://github.com/nemfoundation/nem2-hd-wallets/blob/master/src/ExtendedKey.ts#L301
 
 ## Mosaic
 **Q:** Is it possible that the duration of the mosaic is infinite?   
