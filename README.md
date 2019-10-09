@@ -73,6 +73,9 @@ Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contra
 
 # NEM2
 
+**Q** How to configure the websocket duration for node?
+**A** You may set `maxConnectionAge` at `config-node.properties`.
+
 **Q** How to get the raw public key string (64 characters) from a BIP0032 serialized (66 characters) representation of it?
 **A** Dropping the first 2 characters (first byte) will do. Please refer to https://github.com/nemfoundation/nem2-hd-wallets/blob/master/src/ExtendedKey.ts#L301
 
