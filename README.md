@@ -71,7 +71,7 @@ Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contra
 **Q:** Are there fees for every transaction?  
 **A:** Yes. For the public chain, every transaction will have transaction fee to be paid in XEM. 
 
-# NEM2
+# Catapult
 
 **Q** How to configure the websocket duration for node?
 **A** You may set `maxConnectionAge` at `config-node.properties`.
@@ -120,6 +120,10 @@ A potential solution is to change the `defaultDynamicFeeMultiplier` to a lower v
   
 **Q** How to get the raw public key string (64 characters) from a BIP0032 serialized (66 characters) representation of it?
 **A** Dropping the first 2 characters (first byte) will do. Please refer to https://github.com/nemfoundation/nem2-hd-wallets/blob/master/src/ExtendedKey.ts#L301
+
+## Metadata
+**Q** Can AccountMetadataTransaction send metadata from account A to account B?   
+**A** Yes. AccountMetadataTransaction is an opt-in process, hence, signature from the targeted account is needed too in order for the process to be completed. Use aggregate bonded transaction for this purpose. 
 
 ## Mosaic
 **Q:** Is it possible that the duration of the mosaic is infinite?   
