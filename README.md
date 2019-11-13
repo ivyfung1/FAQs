@@ -73,7 +73,7 @@ Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contra
 
 # Catapult
 
-**Q** How to configure the websocket duration for node?
+**Q** How to configure the websocket duration for node?  
 **A** You may set `maxConnectionAge` at `config-node.properties`.
 
 ## API
@@ -94,10 +94,10 @@ If you’re using Windows 10 Home Edition, you can check out [this guide.](https
 **Q:** I've done `docker-compose up` & when I typed in the terminal `curl localhost:3000/block/1` it gives this error `curl: (7) Failed to connect to localhost port 3000: Connection refused`. How do I fix this error?  
 **A:** Connection refused usually means there is no server running. Try `netstat -an | grep -i`. You will get a list. Try `netstat -an`, if there is no row matching the number 3000 then you have to start the server using Docker Compose. Remove the `/data/mongo` lines in the `docker-compose.yml` file. There are two lines that have the `/data/mongo`. Delete both and run docker-compose up again. If the containers are not built properly, run docker-compose with the following flags `docker-compose up --force-recreate --build`.  
 
-**Q:** Error `does not match calculated receipts hash` appears when setting up Catapult-server. What could have caused this?
+**Q:** Error `does not match calculated receipts hash` appears when setting up Catapult-server. What could have caused this?  
 **A:** This means your network settings vs settings used when running `nemgen` are different.
 
-**Q:** Does `clientPrivateKey` in catapult-rest `userconfig/rest.json` need to be an address with funds? 
+**Q:** Does `clientPrivateKey` in catapult-rest `userconfig/rest.json` need to be an address with funds?  
 **A:** It does not need to be an address with fund. The address is used to uniquely identify a client with the api node.
 
 ## Cross-chain Swap
@@ -105,7 +105,7 @@ If you’re using Windows 10 Home Edition, you can check out [this guide.](https
 **A:** You may attempt as many time as possible before the stipulated time is up. However, if you have the correct secret proof, they shall match at the first attempt.
 
 ## Fee
-**Q** How to calculate the Namespace rental fee?
+**Q** How to calculate the Namespace rental fee?  
 **A** The rental fee is calculated as followed:  
 `rootNamespaceRentalFeePerBlock` (1) *  median network multiplier over last `maxRollbackBlocks` (40).   
 In case there are zero multipliers, these are replaced by the `defaultDynamicFeeMultiplier` (10'000).
@@ -113,13 +113,17 @@ As every node in your test network has `minFeeMultiplier` set to 0, the median b
 A potential solution is to change the `defaultDynamicFeeMultiplier` to a lower value (e.g. 1).
 
 ## Formatting
-**Q** Why REST formatting some UInt64 as hex but others as string?
+**Q** Why REST formatting some UInt64 as hex but others as string?  
 **A** Identifiers do not have a meaning on their own when not encoded. For that reason, we can show them nicely in a shorter form (hex). Doing so, we achieve compatibility with the current endpoint parameters (e.g. /mosaic/<mosaicId (hexa)>).Other values such as supply are easier to read if not encoded (e.g. an amount, a duration). The rule right now is:  
   • quantitative: string  
   • identifier: hex  
   
-**Q** How to get the raw public key string (64 characters) from a BIP0032 serialized (66 characters) representation of it?
+**Q** How to get the raw public key string (64 characters) from a BIP0032 serialized (66 characters) representation of it?  
 **A** Dropping the first 2 characters (first byte) will do. Please refer to https://github.com/nemfoundation/nem2-hd-wallets/blob/master/src/ExtendedKey.ts#L301
+
+## Harvesting
+**Q** Where to find the log for harvesting?   
+**A** `harvesters.dat` in `data` directory will have the relevant inforamtion. 
 
 ## Metadata
 **Q** Can AccountMetadataTransaction send metadata from account A to account B?   
@@ -130,7 +134,7 @@ A potential solution is to change the `defaultDynamicFeeMultiplier` to a lower v
 **A:** Yes. `Eternal_Artifact_Duration (0 duration)` is default for mosaic and should not be specified  in the mosaic definition transaction.
 
 ## Namespace
-**Q:** In a Catapult private deployment, how can we set the Namespace renting price to zero?
+**Q:** In a Catapult private deployment, how can we set the Namespace renting price to zero?  
 **A:** You can try changing the network specific configuration properties. It’s located in `config-network.properties` `rootNamespaceRentalFeePerBlock`, `childNamespaceRentalFee`, `mosaicRentalFee`. You will need to rebuild the server. 
 
 ## NEM2-CLI
@@ -171,7 +175,7 @@ Download link here: https://www.python.org/downloads/windows/
 **A:** If you have 3 million XEMs, a server with 8GB of RAM and an average CPU should suffice. For storage, 20GB should be enough.
 
 ## Timestamp
-**Q:** I got an error saying the timestamp is too far in the future. How to fix it?  
+**Q:** I got an error saying the timestamp is too far in the future. How to fix it?   
 **A:** Your system time is not synchronised with the network time. You may synchronised it using SDK. 
 
 **Q:** How do we synchronize the time of the transaction?  
@@ -188,11 +192,11 @@ Download link here: https://www.python.org/downloads/windows/
 **A:** `Version` is just version of transaction structure. `Type` is the code which tells us how transaction fields should be interpreted: simple transfers, multi sig, importance transfer etc.
 
 ## Blocksize
-**Q:** What is NEM’s current blockchain size?  
+**Q:** What is NEM’s current blockchain size?   
 **A:** As of 28 February 2019, it's 2.8GB.
 
 ## Exchanges
-**Q:** How many types of transaction are support by exchanges?  
+**Q:** How many types of transaction are support by exchanges?   
 **A:** There are 8 types of transactions in NEM1. However, exchanges are not concern about all of those, like ImportantTransfer and MultisigAggregateModification etc. It is the transferTransaction type 257 that the exchanges would concern. the However, there are 2 versions of transaction: 
 ' Version 1 for transfer of "XEM".
 Version 2 for transfer of "Mosaic".
