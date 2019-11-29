@@ -137,6 +137,9 @@ A potential solution is to change the `defaultDynamicFeeMultiplier` to a lower v
 **Q:** In a Catapult private deployment, how can we set the Namespace renting price to zero?  
 **A:** You can try changing the network specific configuration properties. It’s located in `config-network.properties` `rootNamespaceRentalFeePerBlock`, `childNamespaceRentalFee`, `mosaicRentalFee`. You will need to rebuild the server. 
 
+**Q** `namespaces.endHeight` property = `namespaces.startHeight` + duration + grace period. Is it a wanted behaviour?  
+**A** Yes. 30 days of grace period is inlucded by default. 
+
 ## NEM2-CLI
 **Q:** `Failed at the bufferutil@3.0.5 install script` This errors appeared when *npm install --global nem2-cli* was ran. What could be the cause?  
 **A:** Install Python version 2.7. Restart the PC to get the system paths updated. 
