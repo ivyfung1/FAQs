@@ -126,19 +126,22 @@ A potential solution is to change the `defaultDynamicFeeMultiplier` to a lower v
 **A** `harvesters.dat` in `data` directory will have the relevant inforamtion. 
 
 ## Metadata
-**Q** Can AccountMetadataTransaction send metadata from account A to account B?   
-**A** Yes. AccountMetadataTransaction is an opt-in process, hence, signature from the targeted account is needed too in order for the process to be completed. Use aggregate bonded transaction for this purpose. 
+**Q:** Can AccountMetadataTransaction send metadata from account A to account B?   
+**A:** Yes. AccountMetadataTransaction is an opt-in process, hence, signature from the targeted account is needed too in order for the process to be completed. Use aggregate bonded transaction for this purpose. 
 
 ## Mosaic
 **Q:** Is it possible that the duration of the mosaic is infinite?   
 **A:** Yes. `Eternal_Artifact_Duration (0 duration)` is default for mosaic and should not be specified  in the mosaic definition transaction.
 
+**Q:** Does Catapult provide role based access control like erc20?  
+**A:** You can use [mosaic restriction](https://nemtech.github.io/concepts/mosaic-restriction.html) or [account metadata](https://nemtech.github.io/concepts/metadata.html) for this purpose.
+
 ## Namespace
 **Q:** In a Catapult private deployment, how can we set the Namespace renting price to zero?  
 **A:** You can try changing the network specific configuration properties. It’s located in `config-network.properties` `rootNamespaceRentalFeePerBlock`, `childNamespaceRentalFee`, `mosaicRentalFee`. You will need to rebuild the server. 
 
-**Q** `namespaces.endHeight` property = `namespaces.startHeight` + duration + grace period. Is it a wanted behaviour?  
-**A** Yes. 30 days of grace period is inlucded by default. 
+**Q:** `namespaces.endHeight` property = `namespaces.startHeight` + duration + grace period. Is it a wanted behaviour?  
+**A:** Yes. 30 days of grace period is inlucded by default. 
 
 ## NEM2-CLI
 **Q:** `Failed at the bufferutil@3.0.5 install script` This errors appeared when *npm install --global nem2-cli* was ran. What could be the cause?  
