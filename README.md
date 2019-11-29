@@ -73,8 +73,9 @@ Check out this [tutorial.](https://blog.nem.io/how-to-use-multi-signature-contra
 
 # Catapult
 
-**Q** How to configure the websocket duration for node?  
-**A** You may set `maxConnectionAge` at `config-node.properties`.
+## Account
+**Q:** Is OutgoingTransactionType allowed in AccountOperationRestriction?  
+**A:** Yes. Allowed transaction type added must be Entity_Type_Account_Operation_Restriction.
 
 ## API
 **Q:** Does Catapult has API Key feature to secure REST API?  
@@ -154,6 +155,12 @@ Download link here: https://www.python.org/downloads/windows/
 
 **Q:** Does the user/voter has to use a wallet to vote?  
 **A:** No, a wallet is not necessary.
+
+## Websocket
+
+**Q** How to configure the websocket duration for node?  
+**A** You may set `maxConnectionAge` at `config-node.properties`.
+
 
 # NEM1
 
