@@ -105,6 +105,10 @@ If you’re using Windows 10 Home Edition, you can check out [this guide.](https
 **Q:** How many attempts can be made until the secret proofs and secret lock match?  
 **A:** You may attempt as many time as possible before the stipulated time is up. However, if you have the correct secret proof, they shall match at the first attempt.
 
+## Errors
+**Q** What does `Failure_Chain_Block_Not_Hit` means?  
+**A** It could mean the harvester not eligble to harvest the block. 
+
 ## Fee
 **Q** How to calculate the Namespace rental fee?  
 **A** The rental fee is calculated as followed:  
