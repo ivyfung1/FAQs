@@ -101,6 +101,9 @@ If you’re using Windows 10 Home Edition, you can check out [this guide.](https
 **Q:** Does `clientPrivateKey` in catapult-rest `userconfig/rest.json` need to be an address with funds?  
 **A:** It does not need to be an address with fund. The address is used to uniquely identify a client with the api node.
 
+**Q** I ran into `api-harvest-assembly_api-node_1 exited with code 253`, how can I fixed it?  
+**A** You may delete `*.lock` files under `data` directory. You may also purge the `data` directory or run the [recovery tool.](https://nemtech.github.io/guides/network/creating-a-private-test-net.html#commands)
+
 ## Cross-chain Swap
 **Q:** How many attempts can be made until the secret proofs and secret lock match?  
 **A:** You may attempt as many time as possible before the stipulated time is up. However, if you have the correct secret proof, they shall match at the first attempt.
