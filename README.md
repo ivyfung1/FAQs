@@ -104,6 +104,10 @@ If you’re using Windows 10 Home Edition, you can check out [this guide.](https
 **Q** I ran into `api-harvest-assembly_api-node_1 exited with code 253`, how can I fixed it?  
 **A** You may delete `*.lock` files under `data` directory. You may also purge the `data` directory or run the [recovery tool.](https://nemtech.github.io/guides/network/creating-a-private-test-net.html#commands)
 
+## CLI
+**Q** `symbol-cli profile list` command is listing the profile I have saved locally. (for Testnet)  
+**A** Check in`symbol-cli.config.json` if you have profile created from older version of CLI. If there is, delete those profile as there are extra information added to the profile in the new version of CLI, hence, those profile will not be able to be displayed.   
+
 ## Cross-chain Swap
 **Q:** How many attempts can be made until the secret proofs and secret lock match?  
 **A:** You may attempt as many time as possible before the stipulated time is up. However, if you have the correct secret proof, they shall match at the first attempt.
